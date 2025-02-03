@@ -148,3 +148,5 @@ npm-debug.log
 /database/
 .node_modules/
 
+.idea
+
