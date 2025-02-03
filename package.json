@@ -1,0 +1,12 @@
+{
+  "name": "resume-maker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:cms": "cd backend && npm run dev",
+    "dev:nextjs": "cd frontend && npm run dev"
+  },
+  "author": "",
+  "license": "ISC"
+}

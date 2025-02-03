@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_sections_prisings",
+  "info": {
+    "displayName": "Prising"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "prisingCard": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.pricing-card"
+    }
+  }
+}
