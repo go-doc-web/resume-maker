@@ -394,7 +394,7 @@ export interface ApiLandingPageLandingPage extends Struct.CollectionTypeSchema {
     metadata: Schema.Attribute.Component<'seo.meta-data', true>;
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
-      ['sections.hero', 'sections.row', 'sections.prising']
+      ['sections.hero', 'sections.row', 'sections.prising', 'sections.cta']
     >;
     slug: Schema.Attribute.UID<'title'>;
     title: Schema.Attribute.String;

@@ -69,6 +69,11 @@ const GET_LANDING_PAGE_DATA = gql`
   }
 `;
 
+// Function to get the object with slug "starpi"
+function getObjectWithSlug(data, slug) {
+  return data.landingPages.find((page) => page.slug === slug);
+}
+
 function LandingPage() {
   const { loading, error, data } = useQuery(GET_LANDING_PAGE_DATA);
   console.log("data", data);
@@ -78,15 +83,16 @@ function LandingPage() {
   if (!data || !data.landingPages || data.landingPages.length === 0)
     return <p>No landing page data found.</p>;
 
-  const landingPage = data?.landingPages[0]; // Assuming you only have one landing page.  Adjust as needed.
-
+  const starpiObject = getObjectWithSlug(data, "starpi");
+  console.log(starpiObject);
+  console.log("landingPage", starpiObject?.title);
   return (
     <div>
-      <h1>{landingPage.title}</h1>
-      <p>{landingPage.description}</p>
+      <h1>{starpiObject.title}</h1>
+      <p>{starpiObject.description}</p>
 
       {/* Render sections */}
-      {landingPage.sections.map((section) => {
+      {starpiObject.sections.map((section) => {
         switch (section.__typename) {
           case "ComponentSectionsPrising":
             return (

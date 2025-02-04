@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_elements_forms",
+  "info": {
+    "displayName": "Form",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "inputForm": {
+      "type": "component",
+      "repeatable": true,
+      "component": "molecules.input"
+    },
+    "buttonSubmit": {
+      "type": "component",
+      "repeatable": false,
+      "component": "molecules.button-link"
+    }
+  }
+}

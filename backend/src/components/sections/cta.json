@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_sections_ctas",
+  "info": {
+    "displayName": "Cta"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "ctaForm": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.form"
+    }
+  }
+}

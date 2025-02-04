@@ -32,7 +32,8 @@
       "components": [
         "sections.hero",
         "sections.row",
-        "sections.prising"
+        "sections.prising",
+        "sections.cta"
       ]
     }
   }

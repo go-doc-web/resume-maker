@@ -12,6 +12,20 @@ export interface ElementsCard extends Struct.ComponentSchema {
   };
 }
 
+export interface ElementsForm extends Struct.ComponentSchema {
+  collectionName: 'components_elements_forms';
+  info: {
+    description: '';
+    displayName: 'Form';
+  };
+  attributes: {
+    buttonSubmit: Schema.Attribute.Component<'molecules.button-link', false>;
+    description: Schema.Attribute.Text;
+    heading: Schema.Attribute.String;
+    inputForm: Schema.Attribute.Component<'molecules.input', true>;
+  };
+}
+
 export interface ElementsPricingCard extends Struct.ComponentSchema {
   collectionName: 'components_elements_pricing_cards';
   info: {
@@ -29,13 +43,39 @@ export interface ElementsPricingCard extends Struct.ComponentSchema {
 export interface MoleculesButtonLink extends Struct.ComponentSchema {
   collectionName: 'components_molecules_button_links';
   info: {
+    description: '';
     displayName: 'Button Link';
   };
   attributes: {
     isExternal: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     link: Schema.Attribute.String;
     title: Schema.Attribute.String;
-    type: Schema.Attribute.Enumeration<['PRIMERY', 'SECONDARY']>;
+    type: Schema.Attribute.Enumeration<['submit', 'button', 'reset', 'menu']>;
+    typeStyles: Schema.Attribute.Enumeration<['PRIMERY', 'SECONDARY']>;
+  };
+}
+
+export interface MoleculesInput extends Struct.ComponentSchema {
+  collectionName: 'components_molecules_inputs';
+  info: {
+    displayName: 'Input';
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+    placeholder: Schema.Attribute.String;
+    type: Schema.Attribute.String;
+  };
+}
+
+export interface SectionsCta extends Struct.ComponentSchema {
+  collectionName: 'components_sections_ctas';
+  info: {
+    displayName: 'Cta';
+  };
+  attributes: {
+    ctaForm: Schema.Attribute.Component<'elements.form', false>;
+    description: Schema.Attribute.Text;
+    heading: Schema.Attribute.String;
   };
 }
 
@@ -90,8 +130,11 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'elements.card': ElementsCard;
+      'elements.form': ElementsForm;
       'elements.pricing-card': ElementsPricingCard;
       'molecules.button-link': MoleculesButtonLink;
+      'molecules.input': MoleculesInput;
+      'sections.cta': SectionsCta;
       'sections.hero': SectionsHero;
       'sections.prising': SectionsPrising;
       'sections.row': SectionsRow;
