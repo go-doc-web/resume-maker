@@ -82,12 +82,16 @@ export interface SectionsCta extends Struct.ComponentSchema {
 export interface SectionsHero extends Struct.ComponentSchema {
   collectionName: 'components_sections_heroes';
   info: {
+    description: '';
     displayName: 'Hero';
   };
   attributes: {
     heading: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images'>;
     link: Schema.Attribute.Component<'molecules.button-link', false>;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     text: Schema.Attribute.Text;
   };
 }

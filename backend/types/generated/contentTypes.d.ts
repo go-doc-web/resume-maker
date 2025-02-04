@@ -369,13 +369,13 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiLandingPageLandingPage extends Struct.CollectionTypeSchema {
-  collectionName: 'landing_pages';
+export interface ApiContentPageContentPage extends Struct.CollectionTypeSchema {
+  collectionName: 'content_pages';
   info: {
     description: '';
-    displayName: 'Landing Page';
-    pluralName: 'landing-pages';
-    singularName: 'landing-page';
+    displayName: 'Content Page';
+    pluralName: 'content-pages';
+    singularName: 'content-page';
   };
   options: {
     draftAndPublish: true;
@@ -388,10 +388,10 @@ export interface ApiLandingPageLandingPage extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::landing-page.landing-page'
+      'api::content-page.content-page'
     > &
       Schema.Attribute.Private;
-    metadata: Schema.Attribute.Component<'seo.meta-data', true>;
+    metadata: Schema.Attribute.Component<'seo.meta-data', false>;
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       ['sections.hero', 'sections.row', 'sections.prising', 'sections.cta']
@@ -1004,7 +1004,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::landing-page.landing-page': ApiLandingPageLandingPage;
+      'api::content-page.content-page': ApiContentPageContentPage;
       'api::service.service': ApiServiceService;
       'api::todo.todo': ApiTodoTodo;
       'plugin::content-releases.release': PluginContentReleasesRelease;

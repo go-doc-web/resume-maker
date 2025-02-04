@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "landing_pages",
+  "collectionName": "content_pages",
   "info": {
-    "singularName": "landing-page",
-    "pluralName": "landing-pages",
-    "displayName": "Landing Page",
+    "singularName": "content-page",
+    "pluralName": "content-pages",
+    "displayName": "Content Page",
     "description": ""
   },
   "options": {
@@ -24,7 +24,7 @@
     },
     "metadata": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "seo.meta-data"
     },
     "sections": {
