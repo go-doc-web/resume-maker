@@ -1,6 +1,11 @@
 query getHeader {
   header {
-    ...Logo
+    logo {
+      company
+      image {
+        url
+      }
+    }
     navbar {
       items {
         id

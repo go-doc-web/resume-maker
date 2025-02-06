@@ -1674,7 +1674,7 @@ export type GetContentPagesQuery = { __typename?: 'Query', contentPages: Array<{
 export type GetHeaderQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetHeaderQuery = { __typename?: 'Query', header?: { __typename?: 'Header', logo?: { __typename?: 'Logo', company?: string | null, image?: { __typename?: 'UploadFile', url: string, name: string } | null } | null, navbar?: { __typename?: 'ComponentGlobalNavbar', items?: Array<{ __typename?: 'ComponentMoleculesNavLink', id: string, target?: Enum_Componentmoleculesnavlink_Target | null, text?: string | null, url?: string | null } | null> | null } | null, auth?: Array<{ __typename?: 'ComponentGlobalAuth', id: string, text?: string | null, url?: string | null } | null> | null } | null };
+export type GetHeaderQuery = { __typename?: 'Query', header?: { __typename?: 'Header', logo?: { __typename?: 'Logo', company?: string | null, image?: { __typename?: 'UploadFile', url: string } | null } | null, navbar?: { __typename?: 'ComponentGlobalNavbar', items?: Array<{ __typename?: 'ComponentMoleculesNavLink', id: string, target?: Enum_Componentmoleculesnavlink_Target | null, text?: string | null, url?: string | null } | null> | null } | null, auth?: Array<{ __typename?: 'ComponentGlobalAuth', id: string, text?: string | null, url?: string | null } | null> | null } | null };
 
 export const ComponentSectionsHeroFragmentFragmentDoc = gql`
     fragment ComponentSectionsHeroFragment on ComponentSectionsHero {
@@ -1744,7 +1744,6 @@ export const GetHeaderDocument = gql`
       company
       image {
         url
-        name
       }
     }
     navbar {

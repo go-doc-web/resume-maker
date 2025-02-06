@@ -1,0 +1,111 @@
+.header {
+  background-color: #f0f0f0; /* Пример цвета фона */
+  padding: 1rem 0; /* Отступы сверху и снизу */
+}
+
+.header__container {
+  max-width: 1200px; /* Максимальная ширина контейнера */
+  margin: 0 auto; /* Центрирование контейнера */
+  display: flex;
+  justify-content: space-between; /* Размещение элементов по краям */
+  align-items: center; /* Выравнивание по вертикали */
+  padding: 0 20px; /* Отступы по бокам */
+}
+
+.header__logo {
+}
+
+.header__logo-link {
+  display: flex; /* Чтобы изображение и текст логотипа были рядом */
+  align-items: center;
+  text-decoration: none; /* Убираем подчеркивание у ссылки */
+  color: inherit; /* Наследуем цвет текста от родителя */
+}
+
+.header__logo-image {
+  max-height: 40px; /* Пример высоты логотипа */
+  margin-right: 10px; /* Отступ справа от изображения */
+}
+
+.header__logo-text {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.header__nav-list {
+  list-style: none; /* Убираем маркеры списка */
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.header__nav-item {
+  margin-left: 20px; /* Отступ между пунктами меню */
+}
+
+.header__nav-link {
+  text-decoration: none;
+  color: #333; /* Пример цвета текста */
+  transition: color 0.3s; /* Плавное изменение цвета при наведении */
+}
+
+.header__nav-link:hover {
+  color: #007bff; /* Пример цвета при наведении */
+}
+
+.header__auth {
+  display: flex;
+}
+
+.header__auth-link {
+  text-decoration: none;
+  color: #333;
+  padding: 8px 16px; /* Отступы внутри кнопок */
+  border-radius: 5px; /* Закругление углов */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.header__auth-login {
+  margin-right: 10px;
+  border: 1px solid #ccc; /* Пример рамки */
+}
+
+.header__auth-login:hover {
+  background-color: #eee;
+}
+
+.header__auth-register {
+  background-color: #007bff; /* Пример цвета фона */
+  color: #fff;
+}
+
+.header__auth-register:hover {
+  background-color: #0056b3;
+}
+
+/* Адаптивность (пример для мобильных устройств) */
+@media (max-width: 768px) {
+  .header__container {
+    flex-direction: column; /* Вертикальное расположение элементов */
+    align-items: flex-start; /* Выравнивание по левому краю */
+  }
+
+  .header__nav-list {
+    flex-direction: column; /* Вертикальное расположение пунктов меню */
+    margin-top: 10px;
+  }
+
+  .header__nav-item {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  .header__auth {
+    margin-top: 10px;
+    flex-direction: column; /* Вертикальное расположение кнопок */
+  }
+
+  .header__auth-link {
+    margin: 5px 0; /* Отступы сверху и снизу у кнопок */
+  }
+}

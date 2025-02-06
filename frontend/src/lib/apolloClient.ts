@@ -1,7 +1,9 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "http://localhost:1337/graphql", // Адрес твоего Strapi GraphQL API
+  link: new HttpLink({
+    uri: "http://127.0.0.1:1337/graphql", // Убедитесь, что ваш API доступен
+  }),
   cache: new InMemoryCache(),
 });
 
