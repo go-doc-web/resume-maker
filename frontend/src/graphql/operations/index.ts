@@ -115,6 +115,45 @@ export type ComponentElementsPricingCardFiltersInput = {
   services?: InputMaybe<ServiceFiltersInput>;
 };
 
+export type ComponentGlobalAuth = {
+  __typename?: 'ComponentGlobalAuth';
+  id: Scalars['ID']['output'];
+  text?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type ComponentGlobalAuthFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentGlobalAuthFiltersInput>>>;
+  not?: InputMaybe<ComponentGlobalAuthFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentGlobalAuthFiltersInput>>>;
+  text?: InputMaybe<StringFilterInput>;
+  url?: InputMaybe<StringFilterInput>;
+};
+
+export type ComponentGlobalAuthInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+  text?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ComponentGlobalNavbar = {
+  __typename?: 'ComponentGlobalNavbar';
+  id: Scalars['ID']['output'];
+  items?: Maybe<Array<Maybe<ComponentMoleculesNavLink>>>;
+};
+
+
+export type ComponentGlobalNavbarItemsArgs = {
+  filters?: InputMaybe<ComponentMoleculesNavLinkFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type ComponentGlobalNavbarInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+  items?: InputMaybe<Array<InputMaybe<ComponentMoleculesNavLinkInput>>>;
+};
+
 export type ComponentMoleculesButtonLink = {
   __typename?: 'ComponentMoleculesButtonLink';
   id: Scalars['ID']['output'];
@@ -151,6 +190,30 @@ export type ComponentMoleculesInputFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<ComponentMoleculesInputFiltersInput>>>;
   placeholder?: InputMaybe<StringFilterInput>;
   type?: InputMaybe<StringFilterInput>;
+};
+
+export type ComponentMoleculesNavLink = {
+  __typename?: 'ComponentMoleculesNavLink';
+  id: Scalars['ID']['output'];
+  target?: Maybe<Enum_Componentmoleculesnavlink_Target>;
+  text?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type ComponentMoleculesNavLinkFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentMoleculesNavLinkFiltersInput>>>;
+  not?: InputMaybe<ComponentMoleculesNavLinkFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentMoleculesNavLinkFiltersInput>>>;
+  target?: InputMaybe<StringFilterInput>;
+  text?: InputMaybe<StringFilterInput>;
+  url?: InputMaybe<StringFilterInput>;
+};
+
+export type ComponentMoleculesNavLinkInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+  target?: InputMaybe<Enum_Componentmoleculesnavlink_Target>;
+  text?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ComponentSectionsCta = {
@@ -333,6 +396,13 @@ export enum Enum_Componentmoleculesbuttonlink_Typestyles {
   Secondary = 'SECONDARY'
 }
 
+export enum Enum_Componentmoleculesnavlink_Target {
+  Blank = 'blank',
+  Parent = 'parent',
+  Self = 'self',
+  Top = 'top'
+}
+
 export enum Enum_Todo_Priority {
   Critical = 'critical',
   Minor = 'minor',
@@ -376,7 +446,32 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type GenericMorph = ComponentElementsCard | ComponentElementsForm | ComponentElementsPricingCard | ComponentMoleculesButtonLink | ComponentMoleculesInput | ComponentSectionsCta | ComponentSectionsHero | ComponentSectionsPrising | ComponentSectionsRow | ComponentSeoMetaData | ContentPage | I18NLocale | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Todo | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = ComponentElementsCard | ComponentElementsForm | ComponentElementsPricingCard | ComponentGlobalAuth | ComponentGlobalNavbar | ComponentMoleculesButtonLink | ComponentMoleculesInput | ComponentMoleculesNavLink | ComponentSectionsCta | ComponentSectionsHero | ComponentSectionsPrising | ComponentSectionsRow | ComponentSeoMetaData | ContentPage | Header | I18NLocale | Logo | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Todo | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+
+export type Header = {
+  __typename?: 'Header';
+  auth?: Maybe<Array<Maybe<ComponentGlobalAuth>>>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  documentId: Scalars['ID']['output'];
+  logo?: Maybe<Logo>;
+  navbar?: Maybe<ComponentGlobalNavbar>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type HeaderAuthArgs = {
+  filters?: InputMaybe<ComponentGlobalAuthFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type HeaderInput = {
+  auth?: InputMaybe<Array<InputMaybe<ComponentGlobalAuthInput>>>;
+  logo?: InputMaybe<Scalars['ID']['input']>;
+  navbar?: InputMaybe<ComponentGlobalNavbarInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+};
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -481,11 +576,69 @@ export type JsonFilterInput = {
   startsWith?: InputMaybe<Scalars['JSON']['input']>;
 };
 
+export type Logo = {
+  __typename?: 'Logo';
+  company?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  documentId: Scalars['ID']['output'];
+  image?: Maybe<UploadFile>;
+  locale?: Maybe<Scalars['String']['output']>;
+  localizations: Array<Maybe<Logo>>;
+  localizations_connection?: Maybe<LogoRelationResponseCollection>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type LogoLocalizationsArgs = {
+  filters?: InputMaybe<LogoFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type LogoLocalizations_ConnectionArgs = {
+  filters?: InputMaybe<LogoFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type LogoEntityResponseCollection = {
+  __typename?: 'LogoEntityResponseCollection';
+  nodes: Array<Logo>;
+  pageInfo: Pagination;
+};
+
+export type LogoFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<LogoFiltersInput>>>;
+  company?: InputMaybe<StringFilterInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  documentId?: InputMaybe<IdFilterInput>;
+  locale?: InputMaybe<StringFilterInput>;
+  localizations?: InputMaybe<LogoFiltersInput>;
+  not?: InputMaybe<LogoFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<LogoFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type LogoInput = {
+  company?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['ID']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type LogoRelationResponseCollection = {
+  __typename?: 'LogoRelationResponseCollection';
+  nodes: Array<Logo>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
   createContentPage?: Maybe<ContentPage>;
+  createLogo?: Maybe<Logo>;
   createReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>;
   createReviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>;
   createService?: Maybe<Service>;
@@ -495,6 +648,8 @@ export type Mutation = {
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   deleteContentPage?: Maybe<DeleteMutationResponse>;
+  deleteHeader?: Maybe<DeleteMutationResponse>;
+  deleteLogo?: Maybe<DeleteMutationResponse>;
   deleteReviewWorkflowsWorkflow?: Maybe<DeleteMutationResponse>;
   deleteReviewWorkflowsWorkflowStage?: Maybe<DeleteMutationResponse>;
   deleteService?: Maybe<DeleteMutationResponse>;
@@ -514,6 +669,8 @@ export type Mutation = {
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   updateContentPage?: Maybe<ContentPage>;
+  updateHeader?: Maybe<Header>;
+  updateLogo?: Maybe<Logo>;
   updateReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>;
   updateReviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>;
   updateService?: Maybe<Service>;
@@ -535,6 +692,13 @@ export type MutationChangePasswordArgs = {
 
 export type MutationCreateContentPageArgs = {
   data: ContentPageInput;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
+export type MutationCreateLogoArgs = {
+  data: LogoInput;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
   status?: InputMaybe<PublicationStatus>;
 };
 
@@ -576,6 +740,12 @@ export type MutationCreateUsersPermissionsUserArgs = {
 
 export type MutationDeleteContentPageArgs = {
   documentId: Scalars['ID']['input'];
+};
+
+
+export type MutationDeleteLogoArgs = {
+  documentId: Scalars['ID']['input'];
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
 
 
@@ -645,6 +815,20 @@ export type MutationResetPasswordArgs = {
 export type MutationUpdateContentPageArgs = {
   data: ContentPageInput;
   documentId: Scalars['ID']['input'];
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
+export type MutationUpdateHeaderArgs = {
+  data: HeaderInput;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
+export type MutationUpdateLogoArgs = {
+  data: LogoInput;
+  documentId: Scalars['ID']['input'];
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
   status?: InputMaybe<PublicationStatus>;
 };
 
@@ -720,9 +904,13 @@ export type Query = {
   contentPage?: Maybe<ContentPage>;
   contentPages: Array<Maybe<ContentPage>>;
   contentPages_connection?: Maybe<ContentPageEntityResponseCollection>;
+  header?: Maybe<Header>;
   i18NLocale?: Maybe<I18NLocale>;
   i18NLocales: Array<Maybe<I18NLocale>>;
   i18NLocales_connection?: Maybe<I18NLocaleEntityResponseCollection>;
+  logo?: Maybe<Logo>;
+  logos: Array<Maybe<Logo>>;
+  logos_connection?: Maybe<LogoEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
   reviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>;
   reviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>;
@@ -770,6 +958,11 @@ export type QueryContentPages_ConnectionArgs = {
 };
 
 
+export type QueryHeaderArgs = {
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
 export type QueryI18NLocaleArgs = {
   documentId: Scalars['ID']['input'];
   status?: InputMaybe<PublicationStatus>;
@@ -786,6 +979,31 @@ export type QueryI18NLocalesArgs = {
 
 export type QueryI18NLocales_ConnectionArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
+export type QueryLogoArgs = {
+  documentId: Scalars['ID']['input'];
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
+export type QueryLogosArgs = {
+  filters?: InputMaybe<LogoFiltersInput>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
+export type QueryLogos_ConnectionArgs = {
+  filters?: InputMaybe<LogoFiltersInput>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   status?: InputMaybe<PublicationStatus>;
@@ -1453,6 +1671,11 @@ export type GetContentPagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetContentPagesQuery = { __typename?: 'Query', contentPages: Array<{ __typename?: 'ContentPage', title?: string | null, slug?: string | null, sections?: Array<{ __typename?: 'ComponentSectionsCta' } | { __typename?: 'ComponentSectionsHero', heading?: string | null, id: string, text?: string | null, slug: string, link?: { __typename?: 'ComponentMoleculesButtonLink', isExternal?: boolean | null, link?: string | null, title?: string | null, type?: Enum_Componentmoleculesbuttonlink_Type | null, typeStyles?: Enum_Componentmoleculesbuttonlink_Typestyles | null } | null, image?: { __typename?: 'UploadFile', url: string } | null } | { __typename?: 'ComponentSectionsPrising' } | { __typename?: 'ComponentSectionsRow' } | { __typename?: 'Error' } | null> | null } | null> };
 
+export type GetHeaderQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetHeaderQuery = { __typename?: 'Query', header?: { __typename?: 'Header', logo?: { __typename?: 'Logo', company?: string | null, image?: { __typename?: 'UploadFile', url: string, name: string } | null } | null, navbar?: { __typename?: 'ComponentGlobalNavbar', items?: Array<{ __typename?: 'ComponentMoleculesNavLink', id: string, target?: Enum_Componentmoleculesnavlink_Target | null, text?: string | null, url?: string | null } | null> | null } | null, auth?: Array<{ __typename?: 'ComponentGlobalAuth', id: string, text?: string | null, url?: string | null } | null> | null } | null };
+
 export const ComponentSectionsHeroFragmentFragmentDoc = gql`
     fragment ComponentSectionsHeroFragment on ComponentSectionsHero {
   heading
@@ -1514,3 +1737,61 @@ export type GetContentPagesQueryHookResult = ReturnType<typeof useGetContentPage
 export type GetContentPagesLazyQueryHookResult = ReturnType<typeof useGetContentPagesLazyQuery>;
 export type GetContentPagesSuspenseQueryHookResult = ReturnType<typeof useGetContentPagesSuspenseQuery>;
 export type GetContentPagesQueryResult = Apollo.QueryResult<GetContentPagesQuery, GetContentPagesQueryVariables>;
+export const GetHeaderDocument = gql`
+    query getHeader {
+  header {
+    logo {
+      company
+      image {
+        url
+        name
+      }
+    }
+    navbar {
+      items {
+        id
+        target
+        text
+        url
+      }
+    }
+    auth {
+      id
+      text
+      url
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetHeaderQuery__
+ *
+ * To run a query within a React component, call `useGetHeaderQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetHeaderQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetHeaderQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetHeaderQuery(baseOptions?: Apollo.QueryHookOptions<GetHeaderQuery, GetHeaderQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetHeaderQuery, GetHeaderQueryVariables>(GetHeaderDocument, options);
+      }
+export function useGetHeaderLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetHeaderQuery, GetHeaderQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetHeaderQuery, GetHeaderQueryVariables>(GetHeaderDocument, options);
+        }
+export function useGetHeaderSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetHeaderQuery, GetHeaderQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetHeaderQuery, GetHeaderQueryVariables>(GetHeaderDocument, options);
+        }
+export type GetHeaderQueryHookResult = ReturnType<typeof useGetHeaderQuery>;
+export type GetHeaderLazyQueryHookResult = ReturnType<typeof useGetHeaderLazyQuery>;
+export type GetHeaderSuspenseQueryHookResult = ReturnType<typeof useGetHeaderSuspenseQuery>;
+export type GetHeaderQueryResult = Apollo.QueryResult<GetHeaderQuery, GetHeaderQueryVariables>;

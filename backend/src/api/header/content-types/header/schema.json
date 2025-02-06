@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "headers",
+  "info": {
+    "singularName": "header",
+    "pluralName": "headers",
+    "displayName": "Header",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "logo": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::logo.logo"
+    },
+    "navbar": {
+      "type": "component",
+      "repeatable": false,
+      "component": "global.navbar"
+    },
+    "auth": {
+      "type": "component",
+      "repeatable": true,
+      "component": "global.auth"
+    }
+  }
+}

@@ -40,6 +40,28 @@ export interface ElementsPricingCard extends Struct.ComponentSchema {
   };
 }
 
+export interface GlobalAuth extends Struct.ComponentSchema {
+  collectionName: 'components_global_auths';
+  info: {
+    displayName: 'auth';
+  };
+  attributes: {
+    text: Schema.Attribute.String;
+    url: Schema.Attribute.String;
+  };
+}
+
+export interface GlobalNavbar extends Struct.ComponentSchema {
+  collectionName: 'components_global_navbars';
+  info: {
+    description: '';
+    displayName: 'Navbar';
+  };
+  attributes: {
+    items: Schema.Attribute.Component<'molecules.nav-link', true>;
+  };
+}
+
 export interface MoleculesButtonLink extends Struct.ComponentSchema {
   collectionName: 'components_molecules_button_links';
   info: {
@@ -64,6 +86,21 @@ export interface MoleculesInput extends Struct.ComponentSchema {
     name: Schema.Attribute.String;
     placeholder: Schema.Attribute.String;
     type: Schema.Attribute.String;
+  };
+}
+
+export interface MoleculesNavLink extends Struct.ComponentSchema {
+  collectionName: 'components_molecules_nav_links';
+  info: {
+    description: '';
+    displayName: 'Navlink';
+  };
+  attributes: {
+    target: Schema.Attribute.Enumeration<
+      ['_blank', '_self', '_parent', '_top']
+    >;
+    text: Schema.Attribute.String;
+    url: Schema.Attribute.String;
   };
 }
 
@@ -136,8 +173,11 @@ declare module '@strapi/strapi' {
       'elements.card': ElementsCard;
       'elements.form': ElementsForm;
       'elements.pricing-card': ElementsPricingCard;
+      'global.auth': GlobalAuth;
+      'global.navbar': GlobalNavbar;
       'molecules.button-link': MoleculesButtonLink;
       'molecules.input': MoleculesInput;
+      'molecules.nav-link': MoleculesNavLink;
       'sections.cta': SectionsCta;
       'sections.hero': SectionsHero;
       'sections.prising': SectionsPrising;

@@ -1,0 +1,7 @@
+fragment LogoFragment on Logo {
+  company
+  image {
+    url
+    name
+  }
+}

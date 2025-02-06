@@ -1,0 +1,18 @@
+query getHeader {
+  header {
+    ...Logo
+    navbar {
+      items {
+        id
+        target
+        text
+        url
+      }
+    }
+    auth {
+      id
+      text
+      url
+    }
+  }
+}

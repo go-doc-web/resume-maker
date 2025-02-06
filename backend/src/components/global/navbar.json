@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_global_navbars",
+  "info": {
+    "displayName": "Navbar",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "molecules.nav-link"
+    }
+  }
+}
