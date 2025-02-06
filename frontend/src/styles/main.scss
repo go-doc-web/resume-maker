@@ -1,1 +1,6 @@
-@use "./global.scss";
+@use "./normalize";
+@use "./reset";
+@use "./var";
+@use "./global";
+@use "./hidden";
+@use "./container";

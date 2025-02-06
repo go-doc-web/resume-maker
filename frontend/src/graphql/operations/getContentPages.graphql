@@ -1,0 +1,10 @@
+# src/graphql/operations/ExampleQuery.graphql
+query getContentPages {
+  contentPages {
+    title
+    slug
+    sections {
+      ...ComponentSectionsHeroFragment
+    }
+  }
+}

@@ -1,91 +1,27 @@
 "use client";
 import { useQuery } from "@apollo/client";
-import gql from "graphql-tag";
+import { GetContentPagesDocument } from "@/graphql/operations";
 
-const GET_LANDING_PAGE_DATA = gql`
-  query ExampleQuery {
-    landingPages {
-      title
-      description
-      slug
-      metadata {
-        metaDescription
-        metaTitle
-        metaImage {
-          name
-          url
-        }
-      }
-      sections {
-        ... on ComponentSectionsPrising {
-          heading
-          description
-          id
-          prisingCard {
-            isFeatured
-            link {
-              isExternal
-              link
-              title
-              type
-              id
-            }
-            planPrice
-            planType
-            services {
-              name
-              description
-            }
-          }
-        }
-        ... on ComponentSectionsRow {
-          card {
-            id
-            heading
-            description
-            image {
-              name
-              url
-            }
-          }
-          id
-        }
-        ... on ComponentSectionsHero {
-          heading
-          id
-          image {
-            alternativeText
-            url
-          }
-          link {
-            id
-            isExternal
-            link
-            title
-          }
-        }
-      }
-    }
-  }
-`;
+import "./LandingPage.scss";
 
 // Function to get the object with slug "starpi"
 function getObjectWithSlug(data, slug) {
-  return data.landingPages.find((page) => page.slug === slug);
+  return data?.contentPages.find((page) => page.slug === slug);
 }
 
-function LandingPage() {
-  const { loading, error, data } = useQuery(GET_LANDING_PAGE_DATA);
+function HomePage() {
+  const { loading, error, data } = useQuery(GetContentPagesDocument);
+
   console.log("data", data);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
-  if (!data || !data.landingPages || data.landingPages.length === 0)
+  if (!data || !data.contentPages || data.contentPages.length === 0)
     return <p>No landing page data found.</p>;
 
-  const starpiObject = getObjectWithSlug(data, "starpi");
+  const starpiObject = getObjectWithSlug(data, "home");
   console.log(starpiObject);
-  console.log("landingPage", starpiObject?.title);
+  console.log("contentPages", starpiObject?.title);
   return (
     <div>
       <h1>{starpiObject.title}</h1>
@@ -145,22 +81,26 @@ function LandingPage() {
             );
           case "ComponentSectionsHero":
             return (
-              <div key={section.id}>
-                <h1>{section.heading}</h1>
-                {section.image && (
-                  <img
-                    src={section.image.url}
-                    alt={section.image.alternativeText}
-                  />
-                )}
-                {section.link && (
-                  <a
-                    href={section.link.link}
-                    target={section.link.isExternal ? "_blank" : "_self"}
-                  >
-                    {section.link.title}
-                  </a>
-                )}
+              <div className="container container--fullscreen">
+                <div key={section.id}>
+                  <h1 className="title-hero">{section.heading}</h1>
+                  {section.image && (
+                    <img
+                      // src={section.image.url}
+                      alt={`http://localhost:3000/${section?.image?.alternativeText}`}
+                      src={`http://localhost:1337${section?.image?.url}`}
+                      width={250}
+                    />
+                  )}
+                  {section.link && (
+                    <a
+                      href={section.link.link}
+                      target={section.link.isExternal ? "_blank" : "_self"}
+                    >
+                      {section.link.title}
+                    </a>
+                  )}
+                </div>
               </div>
             );
           default:
@@ -171,4 +111,4 @@ function LandingPage() {
   );
 }
 
-export default LandingPage;
+export default HomePage;

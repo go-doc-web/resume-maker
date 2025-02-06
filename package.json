@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev:cms": "cd backend && npm run dev",
-    "dev:nextjs": "cd frontend && npm run dev"
+    "dev:nextjs": "cd frontend && npm run dev",
+    "dev:generete": "cd frontend && graphql-codegen"
   },
   "author": "",
   "license": "ISC"

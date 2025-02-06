@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import ApolloWrapper from "@/lib/providers/ApolloProvider";
+
+import Header from "@/componets/organisms/Header/Header";
 import "../styles/main.scss";
 
 const geistSans = Geist({
@@ -26,7 +28,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ApolloWrapper>{children}</ApolloWrapper>
+        <ApolloWrapper>
+          <Header />
+          {children}
+        </ApolloWrapper>
       </body>
     </html>
   );

@@ -1,0 +1,17 @@
+# src/graphql/fragments/ComponentSectionsHeroFragment.graphql
+fragment ComponentSectionsHeroFragment on ComponentSectionsHero {
+  heading
+  id
+  text
+  slug
+  link {
+    isExternal
+    link
+    title
+    type
+    typeStyles
+  }
+  image {
+    url
+  }
+}
